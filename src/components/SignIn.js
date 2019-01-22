@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
+
 export default class SignIn extends Component {
     state = {
         auth : false,
@@ -21,8 +22,11 @@ export default class SignIn extends Component {
         })
       }
 
+     
+
   render() {
     const {auth} = this.state;
+
     if(auth) return <Redirect to="/home"/>
         return (
         <div className="container">

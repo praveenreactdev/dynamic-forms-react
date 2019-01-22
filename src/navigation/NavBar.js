@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link,Redirect} from 'react-router-dom';
+import {Link,Redirect,NavLink} from 'react-router-dom';
 export default class NavBar extends Component {
     state = {
         signedIn : true
@@ -17,10 +17,10 @@ export default class NavBar extends Component {
       <div>
         <nav className="nav-wrapper grey darken-3">
             <div className="ui container">
-                <Link to="/" className="brand-logo">Project Creator</Link>
+                <Link to="/home" className="brand-logo">Project Creator</Link>
             <ul className="right">
            <li>
-               <button className= "btn btn-floating right pink lighten-2" onClick={this.signOut}>Log Out</button>
+           <NavLink className = "btn btn-floating light-green lighten-2" to="/">Sam</NavLink>
            </li>
        </ul>
             </div>
