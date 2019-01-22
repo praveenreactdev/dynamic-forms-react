@@ -21,9 +21,9 @@ const initState = {
     switch(action.type){
       case 'ADD_FIELD':
         const {fieldData} = action;
-        state.inputArray.push(fieldData);
-        console.log("updated state",state)
-        return state;
+        const newState = {...state};
+        newState.inputArray.push(fieldData)
+        return newState;
       default:
         return state
     }

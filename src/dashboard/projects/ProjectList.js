@@ -4,12 +4,6 @@ import {connect} from 'react-redux';
 import {addField} from '../../store/actions/addField'
 class ProjectList extends Component {
 
-    state = {
-        firstName : '',
-        lastName : '',
-        middleName : ''
-    }
-
     onClick = (e)=>{
         const fieldData= {
             name : 'Middle Name',
@@ -19,11 +13,7 @@ class ProjectList extends Component {
             type: 'text'
         }
         this.props.addField(fieldData);
-        this.setState({});
-    }
-
-    componentDidMount(){
-        console.log("mounted again")
+        //this.setState({});
     }
 
   render() {
@@ -32,7 +22,6 @@ class ProjectList extends Component {
       <div className="section ui container">
        {
            this.props.fields.inputArray.map((input)=>{
-               console.log(input)
                return(
                 <div className="input-field" key={input.id}>
                     <label htmlFor={input.name}>{input.name}</label>
