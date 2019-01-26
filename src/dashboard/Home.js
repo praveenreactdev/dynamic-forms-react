@@ -8,7 +8,7 @@ import ProjectList from './projects/ProjectList';
       marginTop: '40px',
     };
     return (
-      <div className="home" style={{divStyle}}>
+      <div className="home" style={{backgroundColor:'white',height:'100%',marginTop:'3px'}}>
         <NavBar/>
         <ProjectList/>
       </div>
