@@ -13,19 +13,17 @@ class ProjectList extends Component {
             type: 'text'
         }
         this.props.addField(fieldData);
-        //this.setState({});
     }
 
   render() {
     return (
-        
-      <div className="section ui container">
+      <div className="container" style={{backgroundColor:'white',height:'100%',marginTop:'8px'}}>
        {
            this.props.fields.inputArray.map((input)=>{
                return(
                 <div className="input-field" key={input.id}>
                     <label htmlFor={input.name}>{input.name}</label>
-                    <input type={input.type} id={input.name} onChange={this.handleChange}/>
+                    <input type={input.type} id={input.name} onChange={this.handleChange}></input>
                 </div>
                )
            })

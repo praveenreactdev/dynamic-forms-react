@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
-import {Link,Redirect,NavLink} from 'react-router-dom';
-export default class NavBar extends Component {
+import {Link} from 'react-router-dom';
+import {signOut} from '../store/actions/authenticationActions'
+import {connect} from 'react-redux'
+class NavBar extends Component {
     state = {
         signedIn : true
     }
-    signOut = ()=>{
-        console.log(this.state)
-        this.setState({
-            signedIn:false
-        })
-    }
+ 
     render() {
-        const {signedIn} = this.state;
-        if(!signedIn) return <Redirect to="/"/>
     return (
       <div>
         <nav className="nav-wrapper grey darken-3">
@@ -20,7 +15,7 @@ export default class NavBar extends Component {
                 <Link to="/home" className="brand-logo">Project Creator</Link>
             <ul className="right">
            <li>
-           <NavLink className = "btn btn-floating light-green lighten-2" to="/">Sam</NavLink>
+           <a onClick={this.props.signOut}>Log Out</a>
            </li>
        </ul>
             </div>
@@ -29,3 +24,11 @@ export default class NavBar extends Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch)=>{
+    return{
+      signOut : () => dispatch(signOut())
+    }
+  }
+
+export default connect(null,mapDispatchToProps)(NavBar);

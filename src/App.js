@@ -5,6 +5,7 @@ import {BrowserRouter,Switch,Route} from 'react-router-dom'
 
 export default class App extends Component {
   render() {
+    
     return (
         <BrowserRouter>
         <div className="ui container">
