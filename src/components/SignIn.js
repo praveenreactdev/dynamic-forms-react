@@ -22,11 +22,8 @@ export default class SignIn extends Component {
         })
       }
 
-     
-
   render() {
     const {auth} = this.state;
-
     if(auth) return <Redirect to="/home"/>
         return (
         <div className="container">
