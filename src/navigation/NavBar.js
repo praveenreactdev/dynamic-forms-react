@@ -12,10 +12,10 @@ class NavBar extends Component {
       <div>
         <nav className="nav-wrapper grey darken-3">
             <div className="ui container">
-                <Link to="/home" className="brand-logo">Project Creator</Link>
+                <Link to="/home" className="brand-logo">Dynamic Forms {`</>`}</Link>
             <ul className="right">
            <li>
-           <a onClick={this.props.signOut}>Log Out</a>
+           <Link onClick={this.props.signOut} to="/">Log Out</Link>
            </li>
        </ul>
             </div>
