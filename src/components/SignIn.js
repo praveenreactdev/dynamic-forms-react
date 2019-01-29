@@ -15,6 +15,19 @@ class SignIn extends Component {
         });
   
       }
+<<<<<<< HEAD
+      handleSubmit = (e)=>{
+        e.preventDefault();
+        console.log(this.state)
+        this.setState({
+            auth:true
+        })
+      }
+
+  render() {
+    const {auth} = this.state;
+    if(auth) return <Redirect to="/home"/>
+=======
    
         handleSubmit = (e)=>{
             e.preventDefault();
@@ -24,6 +37,7 @@ class SignIn extends Component {
     const {auth} = this.props;
     
     if(auth.uid) return <Redirect to="/home"/>
+>>>>>>> 7f417b8ebb595dd9d9d447bbb7c46dc9b3eb8b07
         return (
         <div className="container" style={{marginTop:180}}>
         <form onSubmit={this.handleSubmit} style={{backgroundColor:'#181818',color:'white',opacity:'0.9'}}>
