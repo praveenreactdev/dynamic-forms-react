@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NavBar from '../navigation/NavBar';
-import PlayGround from './playGround';
+import ParentComponent from '../coreComponents/ParentComponent'
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom'
  class Home extends Component {
@@ -11,9 +11,9 @@ import {Redirect} from 'react-router-dom'
     return (
       <div className="home" style={{backgroundColor:'white',height:'100%',marginTop:'3px'}}>
         <NavBar/>
-        <div style={{maxHeight:'100%',backgroundColor:'white'}}>
-       <PlayGround/>
-        </div>
+          <div style={{maxHeight:'100%',backgroundColor:'white'}}>
+            <ParentComponent />
+          </div>
       </div>
     )
   }

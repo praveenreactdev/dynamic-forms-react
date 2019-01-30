@@ -7,7 +7,7 @@ shouldComponentUpdate(){
 }
 
   render() {
-      console.log('Fields Props',this.props)
+      
     return (
       <div>
       <p style={{bacgroundColor:'black'}}>test {this.props.fields.obj.name}</p>
