@@ -9,7 +9,6 @@ const formData = [
       props: {
         id: 'firstName',
         floatingLabelText: 'First Name',
-        hintText: 'Name is required'
       }
     },
     {
@@ -18,7 +17,6 @@ const formData = [
         props: {
           id: 'LastName',
           floatingLabelText: 'Last Name',
-          hintText: 'Name is required'
         }
       },
       {
@@ -27,11 +25,8 @@ const formData = [
         props: {
           id: 'Email',
           floatingLabelText: 'Email',
-          hintText: 'Name is required'
         }
       }
-
-    
   ];
 
 class ParentComponent extends Component {
