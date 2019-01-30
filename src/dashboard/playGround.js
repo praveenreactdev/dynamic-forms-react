@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import {SectionsContainer, Section} from 'react-fullpage';
-import Fields from './Fields';
-import { TextField }  from 'material-ui';
-import { Aztec } from 'react-aztec';
 
 const formData = [
     {
@@ -65,13 +62,7 @@ const formData = [
       <hr/>
         <SectionsContainer>
             <Section>
-            <div>
-        <Aztec
-          guid="unique-id"
-          data={formData}
-          library={TextField}
-        />
-      </div>
+
             </Section>
         </SectionsContainer>
       </div>
