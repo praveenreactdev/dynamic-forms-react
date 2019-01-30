@@ -4,7 +4,6 @@ import {signIn} from '../store/actions/authenticationActions';
 import {connect} from 'react-redux'
 class SignIn extends Component {
     state = {
-        auth : false,
         email : '',
         password : ''
     }
@@ -18,14 +17,13 @@ class SignIn extends Component {
       handleSubmit = (e)=>{
         e.preventDefault();
         console.log(this.state)
-        this.setState({
-            auth:true
-        })
+        this.props.signIn(this.state)
       }
 
   render() {
-    const {auth} = this.state;
-    if(auth) return <Redirect to="/home"/>
+    const {auth} = this.props;
+  
+    if(auth.uid) return <Redirect to="/home"/>
         return (
         <div className="container" style={{marginTop:180}}>
         <form onSubmit={this.handleSubmit} style={{backgroundColor:'#181818',color:'white',opacity:'0.9'}}>
