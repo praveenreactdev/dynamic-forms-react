@@ -5,7 +5,7 @@ import CustomComponent from './CustomComponent';
   render() {
      
       const {formData} = this.props;
-      
+      if(!formData) return <div style={{color:'red',fontSize:'46px'}}>Syntax error</div>
     return (
      formData.map((component)=>{
          return (
