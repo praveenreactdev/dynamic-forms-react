@@ -11,7 +11,7 @@ const formData = [
       id: uuid(),
       type: 'inputfield',
       props: {
-        id: 'firstName',
+        id: 'FirstName',
         floatingLabelText: 'First Name',
       }
     },
@@ -35,8 +35,16 @@ const formData = [
         id: uuid(),
         type: 'inputfield',
         props: {
-          id: 'Praveen',
+          id: 'MyName',
           floatingLabelText: 'Praveen',
+        }
+      },
+      {
+        id: uuid(),
+        type: 'Button',
+        props: {
+          id: 'button',
+          floatingLabelText: 'test',
         }
       }
   ];
@@ -49,6 +57,7 @@ class ParentComponent extends Component {
 
  onChange = (data)=>{
    this.setState({data: data.jsObject})
+   console.log('state change by Json Input',this.state)
 }
   onDataChange = (ref,value)=>{
   this.setState({[ref]:value})
