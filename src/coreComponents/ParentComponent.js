@@ -50,6 +50,10 @@ class ParentComponent extends Component {
  onChange = (data)=>{
    this.setState({data: data.jsObject})
 }
+  onDataChange = (ref,value)=>{
+  this.setState({[ref]:value})
+    console.log('state',this.state)
+  }
   render() {
     return (
       <div>
@@ -65,9 +69,9 @@ class ParentComponent extends Component {
                     />
                   </div>
                   <div id="core_component">
-                  <DynamicComponent formData={this.state.data}/>
+                  <DynamicComponent formData={this.state.data} onChangeFunction={this.onDataChange}/> 
                   </div>
-                </div>  
+                </div>
             </Section>
         </SectionsContainer>
       </div>

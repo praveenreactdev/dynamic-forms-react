@@ -5,12 +5,14 @@ import CustomComponent from './CustomComponent';
   render() {
      
       const {formData} = this.props;
+      const {onChangeFunction} = this.props;
+     
       if(!formData) return <div style={{color:'red',fontSize:'46px'}}>Syntax error</div>
     return (
      formData.map((component)=>{
          return (
              <div key={component.id}>
-                <CustomComponent type={component}/>
+                <CustomComponent type={component} onChangeFunction={onChangeFunction}/>
              </div>
          );
 
