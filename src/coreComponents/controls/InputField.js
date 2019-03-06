@@ -5,7 +5,7 @@ class inputfield extends Component {
    
   const innerProps = this.props.props.type
   const {onChange} = this.props;
- const componentProps = this.props.props.type.props;
+  const componentProps = this.props.props.type.props;
  
     return (
       <div className="ui container">

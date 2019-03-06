@@ -5,6 +5,8 @@ import uuid from 'uuid';
 import './styles/style.css'
 import JSONInput from 'react-json-editor-ajrm';
 import locale    from 'react-json-editor-ajrm/locale/en';
+import appService from '../api/appService' 
+import DynamicComponentV2 from './v2Components/DynamicComponentV2';
 
 const formData = [
     {
@@ -52,9 +54,11 @@ const formData = [
 class ParentComponent extends Component {
   
   state = {
-    data: formData
+    data: formData,
+    pages : [],
+    pageData : []
   }
-
+  
  onChange = (data)=>{
    this.setState({data: data.jsObject})
    console.log('state change by Json Input',this.state)
@@ -63,13 +67,31 @@ class ParentComponent extends Component {
   this.setState({[ref]:value})
     console.log('state',this.state)
   }
+  async componentDidMount(){
+   await  appService.get('/getPages').then((response)=>{
+     this.getPages(response.data)
+    })
+    
+  }
+  getPages = (axiosData)=>{
+      const pagesFromResponse = axiosData.pages;
+      for (let i=0;i<1;i++){
+         appService.get(pagesFromResponse[i].url)
+         .then((response)=>{
+          const {pages} = this.state;
+          pages.push(response.data.ApplicationDetail.SubApplicationDetailList[0].AttributeDetailList)
+           this.setState({pages})
+         })
+      }
+  }
   render() {
+    console.log(this.state)
     return (
       <div>
         <SectionsContainer>
             <Section>
                 <div id="container_editor" >
-                  <div ref="editor "id="editor">
+                  <div id="editor">
                   <JSONInput
                         id          = 'editor'
                         placeholder = { formData }
@@ -79,6 +101,7 @@ class ParentComponent extends Component {
                   </div>
                   <div id="core_component">
                   <DynamicComponent formData={this.state.data} onChangeFunction={this.onDataChange}/> 
+                  <DynamicComponentV2 formData={this.state.pages[0]}/>
                   </div>
                 </div>
             </Section>
