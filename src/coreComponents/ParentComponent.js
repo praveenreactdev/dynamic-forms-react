@@ -69,6 +69,7 @@ class ParentComponent extends Component {
   }
   async componentDidMount(){
    await  appService.get('/getPages').then((response)=>{
+     console.log('ComponentDidMount',response.data)
      this.getPages(response.data)
     })
     

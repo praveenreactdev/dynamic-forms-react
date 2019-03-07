@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CustomComponentV2 from './CustomComponentV2'
-import uuid from 'uuid';
+
 class DynamicComponentV2 extends Component {
     render() {
      const {formData} = this.props;
