@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-
-export default class DynamicComponentV2 extends Component {
+import CustomComponentV2 from './CustomComponentV2'
+import uuid from 'uuid';
+class DynamicComponentV2 extends Component {
     render() {
-     
-        const {formData} = this.props;
-        if((!formData) ){console.log('no form data')}else{
-            console.log("DynamicComponentV2",formData)
-            formData.map((component)=>{
-                console.log(component)
-            })
-        }
-      
-        
-        return <div/>
+     const {formData} = this.props;
+     if(!formData) return <div style={{color:'red',fontSize:'46px'}}>No data</div>
+     return (
+        formData.map((component)=>{
+            return (
+                   <CustomComponentV2 data={component} key={component.ComponentId}/>
+            );
+   
+        })
+       )
     }
 }
+
+export default  DynamicComponentV2
