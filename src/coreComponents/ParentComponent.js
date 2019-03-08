@@ -56,37 +56,60 @@ class ParentComponent extends Component {
   state = {
     data: formData,
     pages : [],
-    pageData : []
+    pageData : [],
+    currentPage: 0
   }
   
- onChange = (data)=>{
-   this.setState({data: data.jsObject})
-   console.log('state change by Json Input',this.state)
-}
-  onDataChange = (ref,value)=>{
-  this.setState({[ref]:value})
-    console.log('state',this.state)
-  }
-  async componentDidMount(){
-   await  appService.get('/getPages').then((response)=>{
-     console.log('ComponentDidMount',response.data)
-     this.getPages(response.data)
-    })
-    
-  }
-  getPages = (axiosData)=>{
-      const pagesFromResponse = axiosData.pages;
-      for (let i=0;i<1;i++){
-         appService.get(pagesFromResponse[i].url)
-         .then((response)=>{
-          const {pages} = this.state;
-          pages.push(response.data.ApplicationDetail.SubApplicationDetailList[0].AttributeDetailList)
-           this.setState({pages})
-         })
-      }
-  }
+    onChange = (data)=>{
+      this.setState({data: data.jsObject})
+      console.log('state change by Json Input',this.state)
+    }
+    onChangeV2 = (data)=>{
+      const pages = this.state.pages;
+      const changedPage = [...pages];
+      changedPage[0]=data.jsObject;
+     console.log('changed data',changedPage[0])
+     this.setState({pages:changedPage})
+    }
+
+    onDataChange = (ref,value)=>{
+    this.setState({[ref]:value})
+      console.log('state',this.state)
+    }
+
+    async componentDidMount(){
+    await  appService.get('/getPages').then((response)=>{
+      console.log('ComponentDidMount',response.data)
+      this.getPages(response.data)
+      })
+      
+    }
+    getPages = (axiosData)=>{
+        const pagesFromResponse = axiosData.pages;
+        for (let i=0;i<1;i++){
+          appService.get(pagesFromResponse[i].url)
+          .then((response)=>{
+            const {pages} = this.state;
+            pages.push(response.data.ApplicationDetail.SubApplicationDetailList[0].AttributeDetailList)
+            this.setState({pages})
+          })
+        }
+    }
+
+    onClick_nextButton = ()=>{
+      let currentPage = this.state.currentPage;
+      currentPage++;
+      this.setState({currentPage})
+    }
+
+    onClick_prevButton = ()=>{
+      let currentPage = this.state.currentPage;
+      currentPage--;
+      this.setState({currentPage})
+    }
+
   render() {
-    console.log(this.state)
+  
     return (
       <div>
         <SectionsContainer>
@@ -95,14 +118,18 @@ class ParentComponent extends Component {
                   <div id="editor">
                   <JSONInput
                         id          = 'editor'
-                        placeholder = { formData }
+                        placeholder = { this.state.pages[this.state.currentPage] }
                         locale      = { locale }
-                        onChange = {this.onChange}
+                        onChange = {this.onChangeV2}
                     />
                   </div>
                   <div id="core_component">
-                  <DynamicComponent formData={this.state.data} onChangeFunction={this.onDataChange}/> 
-                  <DynamicComponentV2 formData={this.state.pages[0]}/>
+                {/*<DynamicComponent formData={this.state.data} onChangeFunction={this.onDataChange}/>  */} 
+                  <DynamicComponentV2 
+                            formData={this.state.pages[0]} 
+                            onClickNext={this.onClick_nextButton}
+                            onClickPrev={this.onClick_prevButton}
+                  />
                   </div>
                 </div>
             </Section>

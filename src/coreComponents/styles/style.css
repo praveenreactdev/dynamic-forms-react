@@ -1,7 +1,7 @@
 
 html,body { margin:0; padding:0; height:100%; width:100%; overflow: hidden;}
 
-#editor,#iframe {
+#editor {
     height: 100%;
     width:50%;
     display:inline-block;
@@ -22,7 +22,3 @@ html,body { margin:0; padding:0; height:100%; width:100%; overflow: hidden;}
   overflow : hidden;
   position:relative;
 }
-
-
-/* disable tag matching */
-.ace_editor .ace_marker-layer .ace_bracket { display: none }
