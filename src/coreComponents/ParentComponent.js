@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {SectionsContainer, Section} from 'react-fullpage';
-import DynamicComponent from './DynamicComponent';
+
 import uuid from 'uuid';
 import './styles/style.css'
 import JSONInput from 'react-json-editor-ajrm';

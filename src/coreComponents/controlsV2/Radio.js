@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid';
+
 const Radio=(props)=> {
     const component = props.data;
     const options = component.SubApplicationAttributeValueList;
